@@ -1,5 +1,7 @@
 const REVEAL_WAIT_TIME = 3000;
 
+const EVENT_URL = `https://www.eventbrite.com/e/battle-of-the-bands-tickets-754562786607`;
+
 const FB_ID = '61551782625558';
 const FB_URL = `https://www.facebook.com/profile.php?id=${ FB_ID }`;
 
@@ -12,7 +14,11 @@ const buttons =
 	[
 		'tickets',
 		e => {
-			confirm('Tickets go on sale Wednesday November 8, 2023');
+			if (confirm('Tickets go on sale Thursday November 9, 2023'))
+				window.open(
+					EVENT_URL,
+					NEW_TAB
+				);
 		}
 	],
 	[
@@ -39,15 +45,15 @@ const buttons =
 			document.querySelector(
 				`li a.${ type }`
 			);
-		// btn.addEventListener(
-		// 	'click',
-		// 	e => {
-		// 		e.stopPropagation();
-		// 		e.preventDefault();
+		btn.addEventListener(
+			'click',
+			e => {
+				e.stopPropagation();
+				e.preventDefault();
 
-		// 		listener(e);
-		// 	}
-		// );
+				listener(e);
+			}
+		);
 		return btn;
 	}
 );

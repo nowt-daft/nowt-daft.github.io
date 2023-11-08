@@ -16,6 +16,10 @@
 	--text-color:var(--white-color);
 
 	--padding:10px;
+	--large-padding: calc(var(--padding) * 2);
+
+	--margin: calc(var(--padding) * 3);
+	--large-margin: calc(var(--margin) * 2);
 }
 
 @font-face {
@@ -68,6 +72,7 @@ body {
 	align-items: stretch;
 
 	font-family: "FreeMono", monospace;
+	font-size: 13pt;
 
 	text-align: center;
 }
@@ -82,7 +87,6 @@ footer {
 main {
 	position:relative;
 	flex-grow: 1;
-
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,11 +106,46 @@ a:hover {
 	text-decoration:underline;
 }
 
+p, ul, ol, blockquote {
+	line-height: 1.75;
+}
+
+header {
+	padding-bottom: var(--large-padding);
+	border-bottom: 1px dashed var(--light-grey);
+}
+
 header h1 {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	column-gap: var(--large-padding);
+
 	font-size: clamp(24px, 9vw, 92px);
 	text-shadow: 2px 2px 18px var(--bg-color);
-	margin: calc(var(--padding) * 3) 0 0 0;
+	margin: var(--margin) 0 0 0;
 	text-transform: uppercase;
+}
+
+header h1 span {
+	display:block;
+}
+
+header h1 span.battle {
+	width:100%;
+	flex-grow: 1;
+	font-size: 2.5em;
+}
+
+header h1 span.of-the {
+	flex-grow: 0;
+	font-size:0.75em;
+}
+
+header h1 span.bands {
+	flex-grow: 0;
+	font-size:1.75em;
 }
 
 header h2 {
@@ -114,6 +153,8 @@ header h2 {
 	font-family: "stampers";
 	font-size: clamp(24px, 9vw, 92px);
 	font-weight: bolder;
+
+	text-shadow: 2px 2px 18px var(--bg-color);
 	
 	-webkit-text-stroke: 2px var(--white-color);
 	text-transform: uppercase;
@@ -124,9 +165,84 @@ header h2 {
 header time {
 	font-weight: bold;
 	font-size: clamp(24px, 7vw, 52px);
+	text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.36);
+}
+
+main article {
+	position: relative;
+	text-align: left;
+	margin-top: var(--large-padding);
+
+	padding: var(--large-padding);
+
+	z-index:2;
+
+	min-width: 380px;
+}
+
+main article::before {
+	content: "";
+
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index: -1;
+
+	background-color: var(--bg-color);
+	opacity:0.36;
+
+	border-radius: var(--padding);
+}
+
+main article h1 {
+	font-family: 'Freemono', monospace;
+	font-weight: bolder;
+	margin:0;
+}
+
+ul.line-up {
+	font-family: 'stampers';
+	font-size: 24px;
+	font-weight: bolder;
+}
+
+ul.menu {
+	list-style: none;
+	padding:0;
+	font-size: 30px;
+	margin-top: var(--large-margin);
+}
+
+ul.menu li {
+	margin: var(--margin);
+}
+
+ul.menu a.btn {
+	display:block;
+
+	color:var(--text-color);
+	background-color:var(--blue-color);
+	font-weight: bold;
+
+	border-radius: var(--padding);
+
+	text-align: center;
+
+	padding: var(--padding) var(--margin);
+}
+
+ul.menu a.btn:hover {
+	text-decoration: none;
+	background-color: var(--green-color);
 }
 
 #loading-screen {
+	--duration: 3s;
+
+	visibility:visible;
+
 	position: fixed;
 	top:0;
 	left:0;
@@ -143,7 +259,9 @@ header time {
 
 	background: var(--bg-color);
 
-	transition: opacity 3s ease 0s;
+	transition:
+		opacity var(--duration) ease 0s,
+		visibility 0s linear var(--duration);
 }
 
 #loading-screen .loader {
@@ -151,8 +269,8 @@ header time {
 
 	border-radius:50%;
 
-	width:50%;
-	max-width: 240px;
+	width: 240px;
+	height: 240px;
 	
 	aspect-ratio:1.0;
 
@@ -161,28 +279,10 @@ header time {
 }
 
 html.ready #loading-screen {
+	visibility: hidden;
 	opacity:0;
 }
 
 html.ready #loading-screen .loader {
 	border:8px dashed var(--white-color);	
-}
-
-div.temporary {
-	position: absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}
-
-div.temporary h1 {
-	font-size: clamp(32px, 20vw, 120px);
-	text-shadow: 2px 2px 30px var(--bg-color);
-
-	margin:0;
 }
