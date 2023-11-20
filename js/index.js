@@ -1,9 +1,10 @@
 const REVEAL_WAIT_TIME = 3000;
 
 const EVENT_URL = `https://www.eventbrite.com/e/battle-of-the-bands-tickets-754562786607`;
-
 const FB_ID = '61551782625558';
-const FB_URL = `https://www.facebook.com/profile.php?id=${ FB_ID }`;
+// const FB_URL = `https://www.facebook.com/profile.php?id=${ FB_ID }`;
+const FB_URL = `https://www.facebook.com/events/359456003112585`;
+const INSTA_URL = `https://www.instagram.com/tablefortytwoentertainment/`;
 
 const NEW_TAB = '_blank';
 
@@ -13,33 +14,20 @@ const buttons =
 [
 	[
 		'tickets',
-		e => {
-			if (confirm('Tickets go on sale Thursday November 9, 2023'))
-				window.open(
-					EVENT_URL,
-					NEW_TAB
-				);
-		}
+		EVENT_URL
 	],
 	[
 		'facebook',
-		e => {
-			window.open(
-				FB_URL,
-				NEW_TAB
-			);
-		}
+		FB_URL
 	],
 	[
 		'instagram',
-		e => {
-			alert('LINK NOT YET AVAILABLE');
-		}
+		INSTA_URL
 	]
 ].map(
 	([
 		type,
-		listener
+		url
 	]) => {
 		const btn =
 			document.querySelector(
@@ -51,7 +39,10 @@ const buttons =
 				e.stopPropagation();
 				e.preventDefault();
 
-				listener(e);
+				window.open(
+					url,
+					NEW_TAB
+				);
 			}
 		);
 		return btn;

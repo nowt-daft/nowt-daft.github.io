@@ -55,11 +55,21 @@ body {
 	color:var(--text-color);
 	background-color:var(--bg-color);
 
-	background-image: url('../assets/bg.jpeg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: bottom center;
-	background-blend-mode: lighten;
+	background-image:
+		url('../assets/explosion.png'),
+		url('../assets/bg.jpeg');
+	background-size:
+		cover,
+		cover;
+	background-repeat:
+		no-repeat,
+		no-repeat;
+	background-position:
+		center center,
+		bottom center;
+	background-blend-mode:
+		overlay,
+		lighten;
 
 	min-height:100vh;
 
@@ -136,16 +146,20 @@ header h1 span.battle {
 	width:100%;
 	flex-grow: 1;
 	font-size: 2.5em;
+	margin-bottom:-10px;
 }
 
 header h1 span.of-the {
 	flex-grow: 0;
 	font-size:0.75em;
+	line-height: 1.125;
+	margin-top:6px;
 }
 
 header h1 span.bands {
 	flex-grow: 0;
 	font-size:1.75em;
+	margin-top:-10px;
 }
 
 header h2 {
