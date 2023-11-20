@@ -153,13 +153,12 @@ header h1 span.of-the {
 	flex-grow: 0;
 	font-size:0.75em;
 	line-height: 1.125;
-	margin-top:6px;
+	padding-top:17px;
 }
 
 header h1 span.bands {
 	flex-grow: 0;
 	font-size:1.75em;
-	margin-top:-18px;
 }
 
 header h2 {
